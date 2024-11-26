@@ -1,0 +1,37 @@
+# Ignore build artifacts
+/build/
+/bin/
+/lib/
+
+# Ignore CMake generated files
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+compile_commands.json
+Makefile
+
+# Ignore VS Code specific files
+.vscode/
+/.vscode/settings.json
+.vscode/launch.json
+.vscode/tasks.json
+
+# Ignore CubeMX specific files
+/.project
+/.cproject
+/.mxproject
+
+# Ignore user-specific files
+*.swp
+*~
+*.log
+
+# Ignore Ninja build files
+/build.ninja
+/rules.ninja
+/.ninja_deps
+/.ninja_log
+
+# Ignore other unwanted files
+.DS_Store
+Thumbs.db
