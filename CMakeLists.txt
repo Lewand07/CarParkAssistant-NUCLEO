@@ -46,6 +46,9 @@ add_subdirectory(User/Devices/Servo/mg996r)
 # Add MX150 motor driver API sources
 add_subdirectory(User/Devices/Motor/mx1508)
 
+# Add Car Assistant library sources
+add_subdirectory(User/)
+
 # Link directories setup
 target_link_directories(${CMAKE_PROJECT_NAME} PRIVATE
     # Add user defined library search paths
@@ -73,4 +76,5 @@ target_link_libraries(${CMAKE_PROJECT_NAME}
     # Add user defined libraries
     mg996r_servo_api
     mx1508_motor_api
+    car_assistant_lib
 )
