@@ -46,6 +46,9 @@ add_subdirectory(User/Devices/Servo/mg996r)
 # Add MX150 motor driver API sources
 add_subdirectory(User/Devices/Motor/mx1508)
 
+# Add ST VL53L3CX sensor API sources
+add_subdirectory(User/Devices/Sensor/ST/vl53l3cx)
+
 # Add Car Assistant library sources
 add_subdirectory(User/)
 
@@ -74,7 +77,10 @@ target_link_libraries(${CMAKE_PROJECT_NAME}
     stm32cubemx
 
     # Add user defined libraries
+    # devices
     mg996r_servo_api
     mx1508_motor_api
+    vl53l3cx_sensor_api
+    # user code
     car_assistant_lib
 )
