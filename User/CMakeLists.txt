@@ -24,6 +24,7 @@ target_sources(car_assistant_lib INTERFACE
     Adapters/Src/motor_mx1508_adapter.c
     Interfaces/Src/sensor_interface.c
     Adapters/Src/sensor_vl53lx_adapter.c
+    Adapters/Src/sensor_vl53l5cx_adapter.c
 )
 
 target_link_directories(car_assistant_lib INTERFACE
