@@ -22,6 +22,8 @@ target_sources(car_assistant_lib INTERFACE
     Adapters/Src/servo_mg996r_adapter.c
     Interfaces/Src/motor_interface.c
     Adapters/Src/motor_mx1508_adapter.c
+    Interfaces/Src/sensor_interface.c
+    Adapters/Src/sensor_vl53lx_adapter.c
 )
 
 target_link_directories(car_assistant_lib INTERFACE
