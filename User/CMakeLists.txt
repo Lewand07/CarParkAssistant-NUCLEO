@@ -20,6 +20,8 @@ target_include_directories(car_assistant_lib INTERFACE
 target_sources(car_assistant_lib INTERFACE
     Interfaces/Src/servo_interface.c
     Adapters/Src/servo_mg996r_adapter.c
+    Interfaces/Src/motor_interface.c
+    Adapters/Src/motor_mx1508_adapter.c
 )
 
 target_link_directories(car_assistant_lib INTERFACE
