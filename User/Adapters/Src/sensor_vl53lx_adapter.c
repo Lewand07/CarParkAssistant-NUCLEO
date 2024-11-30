@@ -1,10 +1,10 @@
 #include "sensor_vl53lx_adapter.h"
 
-
 Sensor_Status Sensor_Adapter_VL53LX_Init(void* sensor_instance) {
     VL53LX_DEV dev = (VL53LX_DEV)sensor_instance;
 
-    if ((NULL == dev) || (VL53LX_WaitDeviceBooted(dev)) || (VL53LX_DataInit(dev)) || (VL53LX_StartMeasurement(dev))) {
+    if ((NULL == dev) || (VL53LX_WaitDeviceBooted(dev)) || (VL53LX_DataInit(dev)) ||
+        (VL53LX_StartMeasurement(dev))) {
         return SENSOR_ERROR;
     }
 
@@ -23,8 +23,8 @@ Sensor_Status Sensor_Adapter_VL53LX_ReadData(void* sensor_instance, Sensor_Data*
 
     /* Clear the distances array */
     memset(data->distances, 0, sizeof(data->distances));
-    data->rows = 1;  /* VL53LX uses a single column for detected objects */
-    data->cols = 0;  /* Will be set dynamically */
+    data->rows = 1; /* VL53LX uses a single column for detected objects */
+    data->cols = 0; /* Will be set dynamically */
 
     do { /* Polling Mode */
         status = VL53LX_GetMeasurementDataReady(Dev, &NewDataReady);
@@ -55,7 +55,7 @@ Sensor_Status Sensor_Adapter_VL53LX_ReadData(void* sensor_instance, Sensor_Data*
 }
 
 Sensor_Interface Sensor_VL53LX_Create(VL53LX_DEV sensor_device) {
-    Sensor_Interface sensor = { NULL, NULL, NULL };
+    Sensor_Interface sensor = {NULL, NULL, NULL};
 
     if (NULL != sensor_device) {
         sensor.sensor_instance = sensor_device;

@@ -1,8 +1,8 @@
 #ifndef SERVO_VL53L5CX_ADAPTER_H
 #define SERVO_VL53L5CX_ADAPTER_H
 
-#include "vl53l5cx_api.h"
 #include "sensor_interface.h"
+#include "vl53l5cx_api.h"
 
 /**
  * @brief Initialize the sensor interface.
@@ -26,4 +26,4 @@ Sensor_Status Sensor_Adapter_VL53L5CX_ReadData(void* sensor_instance, Sensor_Dat
  */
 Sensor_Interface Sensor_VL53L5CX_Create(VL53L5CX_Configuration* sensor_device);
 
-#endif // SERVO_VL53L5CX_ADAPTER_H
+#endif  // SERVO_VL53L5CX_ADAPTER_H

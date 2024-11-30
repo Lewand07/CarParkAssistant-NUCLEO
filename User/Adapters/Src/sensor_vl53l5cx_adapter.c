@@ -1,6 +1,5 @@
 #include "sensor_vl53l5cx_adapter.h"
 
-
 /* Adapter Initialization Function */
 Sensor_Status Sensor_Adapter_VL53L5CX_Init(void* sensor_instance) {
     VL53L5CX_Configuration* dev = (VL53L5CX_Configuration*)sensor_instance;
@@ -58,7 +57,7 @@ Sensor_Status Sensor_Adapter_VL53L5CX_ReadData(void* sensor_instance, Sensor_Dat
 }
 
 Sensor_Interface Sensor_VL53L5CX_Create(VL53L5CX_Configuration* sensor_device) {
-    Sensor_Interface sensor = { NULL, NULL, NULL };
+    Sensor_Interface sensor = {NULL, NULL, NULL};
 
     if (NULL != sensor_device) {
         sensor.sensor_instance = sensor_device;

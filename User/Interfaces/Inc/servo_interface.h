@@ -31,4 +31,4 @@ Servo_Status Servo_Init(Servo_Interface* servo);
  */
 Servo_Status Servo_SetAngle(Servo_Interface* servo, float angle);
 
-#endif // SERVO_INTERFACE_H
+#endif  // SERVO_INTERFACE_H

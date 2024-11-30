@@ -41,4 +41,4 @@ Sensor_Status Sensor_Init(Sensor_Interface* sensor);
  */
 Sensor_Status Sensor_ReadData(Sensor_Interface* sensor, Sensor_Data* data);
 
-#endif // SENSOR_INTERFACE_H
+#endif  // SENSOR_INTERFACE_H

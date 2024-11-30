@@ -54,4 +54,4 @@ MX1508_Status MX1508_SetSpeed(const MX1508_Motor_DEV* dev, MX1508_Motor_Directio
  */
 MX1508_Status MX1508_Stop(const MX1508_Motor_DEV* dev);
 
-#endif // MX1508_MOTOR_API_H
+#endif  // MX1508_MOTOR_API_H

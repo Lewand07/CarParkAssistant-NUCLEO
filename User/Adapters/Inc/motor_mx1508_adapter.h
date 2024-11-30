@@ -1,9 +1,8 @@
 #ifndef MOTOR_MX1508_ADAPTER_H
 #define MOTOR_MX1508_ADAPTER_H
 
-#include "mx1508_motor_api.h"
 #include "motor_interface.h"
-
+#include "mx1508_motor_api.h"
 
 /**
  * @brief Initialize the motor interface.
@@ -28,4 +27,4 @@ Motor_Status Motor_Adapter_MX1508SetSpeed(void* motor_instance, int direction, u
  */
 Motor_Interface Motor_MX1508Create(MX1508_Motor_DEV* motor_device);
 
-#endif // MOTOR_MX1508_ADAPTER_H
+#endif  // MOTOR_MX1508_ADAPTER_H

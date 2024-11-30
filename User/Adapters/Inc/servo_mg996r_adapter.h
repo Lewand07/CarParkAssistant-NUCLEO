@@ -4,7 +4,6 @@
 #include "mg996r_servo_api.h"
 #include "servo_interface.h"
 
-
 /**
  * @brief Initialize the servo interface.
  * @param servo_instance Pointer to the servo instance structure.
@@ -27,4 +26,4 @@ Servo_Status Servo_Adapter_MG996RSetAngle(void* servo_instance, float angle);
  */
 Servo_Interface Servo_MG996RCreate(MG996R_Servo_DEV* servo_device);
 
-#endif // SERVO_MG996R_ADAPTER_H
+#endif  // SERVO_MG996R_ADAPTER_H

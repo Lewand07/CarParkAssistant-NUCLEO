@@ -1,6 +1,5 @@
 #include "servo_mg996r_adapter.h"
 
-
 Servo_Status Servo_Adapter_MG996RInit(void* servo_instance) {
     MG996R_Servo_DEV* dev = (MG996R_Servo_DEV*)servo_instance;
 
@@ -22,7 +21,7 @@ Servo_Status Servo_Adapter_MG996RSetAngle(void* servo_instance, float angle) {
 }
 
 Servo_Interface Servo_MG996RCreate(MG996R_Servo_DEV* servo_device) {
-    Servo_Interface servo = { NULL, NULL, NULL };
+    Servo_Interface servo = {NULL, NULL, NULL};
 
     if (NULL != servo_device) {
         servo.servo_instance = servo_device;

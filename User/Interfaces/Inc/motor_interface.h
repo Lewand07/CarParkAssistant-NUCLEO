@@ -33,4 +33,4 @@ Motor_Status Motor_Init(Motor_Interface* motor);
  */
 Motor_Status Motor_SetSpeed(Motor_Interface* motor, int direction, uint8_t speed);
 
-#endif // MOTOR_INTERFACE_H
+#endif  // MOTOR_INTERFACE_H
