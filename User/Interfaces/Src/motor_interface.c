@@ -15,3 +15,11 @@ Motor_Status Motor_SetSpeed(Motor_Interface* motor, int direction, uint8_t speed
 
     return motor->set_speed(motor->motor_instance, direction, speed);
 }
+
+Motor_Status Motor_Stop(Motor_Interface* motor) {
+    if ((NULL == motor) || (NULL == motor->set_speed)) {
+        return MOTOR_ERROR;
+    }
+
+    return motor->stop(motor->motor_instance);
+}

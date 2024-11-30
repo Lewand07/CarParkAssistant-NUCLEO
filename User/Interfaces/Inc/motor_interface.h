@@ -15,6 +15,7 @@ typedef struct {
     /* Function pointers for motor operations */
     Motor_Status (*initialize)(void* motor_instance);
     Motor_Status (*set_speed)(void* motor_instance, int direction, uint8_t speed);
+    Motor_Status (*stop)(void* motor_instance);
 } Motor_Interface;
 
 /**
@@ -32,5 +33,12 @@ Motor_Status Motor_Init(Motor_Interface* motor);
  * @return Status of the operation.
  */
 Motor_Status Motor_SetSpeed(Motor_Interface* motor, int direction, uint8_t speed);
+
+/**
+ * @brief Stop the motor.
+ * @param motor Pointer to the motor interface structure.
+ * @return Status of the operation.
+ */
+Motor_Status Motor_Stop(Motor_Interface* motor);
 
 #endif  // MOTOR_INTERFACE_H

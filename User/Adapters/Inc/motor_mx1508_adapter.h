@@ -21,6 +21,13 @@ Motor_Status Motor_Adapter_MX1508Init(void* motor_instance);
 Motor_Status Motor_Adapter_MX1508SetSpeed(void* motor_instance, int direction, uint8_t speed);
 
 /**
+ * @brief Stop the motor.
+ * @param motor Pointer to the motor interface structure.
+ * @return Status of the operation.
+ */
+Motor_Status Motor_Adapter_MX1508Stop(void* motor_instance);
+
+/**
  * @brief Create the motor interface.
  * @param motor_device Pointer to the MG-996R motor structure.
  * @return Motor interface.
