@@ -17,7 +17,7 @@ MG996R_Status MG996R_SetAngle(const MG996R_Servo_DEV* dev, float angle) {
         return MG996R_ERROR_NULL_PTR;
     }
 
-    if (MG996R_MIN_ANGLE > angle || MG996R_MAX_ANGLE < angle) {
+    if ((MG996R_MIN_ANGLE > angle) || (MG996R_MAX_ANGLE < angle)) {
         return MG996R_ERROR_INVALID_ANGLE;
     }
 
