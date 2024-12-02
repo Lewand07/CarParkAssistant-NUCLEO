@@ -47,12 +47,26 @@
 /* USER CODE BEGIN Variables */
 
 /* USER CODE END Variables */
-/* Definitions for defaultTask */
-osThreadId_t defaultTaskHandle;
-const osThreadAttr_t defaultTask_attributes = {
-  .name = "defaultTask",
+/* Definitions for CarControlTask */
+osThreadId_t CarControlTaskHandle;
+const osThreadAttr_t CarControlTask_attributes = {
+  .name = "CarControlTask",
   .stack_size = 128 * 4,
   .priority = (osPriority_t) osPriorityNormal,
+};
+/* Definitions for SensorTask */
+osThreadId_t SensorTaskHandle;
+const osThreadAttr_t SensorTask_attributes = {
+  .name = "SensorTask",
+  .stack_size = 128 * 4,
+  .priority = (osPriority_t) osPriorityLow,
+};
+/* Definitions for ParkAssistTask */
+osThreadId_t ParkAssistTaskHandle;
+const osThreadAttr_t ParkAssistTask_attributes = {
+  .name = "ParkAssistTask",
+  .stack_size = 128 * 4,
+  .priority = (osPriority_t) osPriorityLow,
 };
 
 /* Private function prototypes -----------------------------------------------*/
@@ -60,7 +74,9 @@ const osThreadAttr_t defaultTask_attributes = {
 
 /* USER CODE END FunctionPrototypes */
 
-void StartDefaultTask(void *argument);
+void StartCarControlTask(void *argument);
+void StartSensorTask(void *argument);
+void StartParkAssistTask(void *argument);
 
 void MX_FREERTOS_Init(void); /* (MISRA C 2004 rule 8.1) */
 
@@ -91,8 +107,14 @@ void MX_FREERTOS_Init(void) {
   /* USER CODE END RTOS_QUEUES */
 
   /* Create the thread(s) */
-  /* creation of defaultTask */
-  defaultTaskHandle = osThreadNew(StartDefaultTask, NULL, &defaultTask_attributes);
+  /* creation of CarControlTask */
+  CarControlTaskHandle = osThreadNew(StartCarControlTask, NULL, &CarControlTask_attributes);
+
+  /* creation of SensorTask */
+  SensorTaskHandle = osThreadNew(StartSensorTask, NULL, &SensorTask_attributes);
+
+  /* creation of ParkAssistTask */
+  ParkAssistTaskHandle = osThreadNew(StartParkAssistTask, NULL, &ParkAssistTask_attributes);
 
   /* USER CODE BEGIN RTOS_THREADS */
   /* add threads, ... */
@@ -104,22 +126,58 @@ void MX_FREERTOS_Init(void) {
 
 }
 
-/* USER CODE BEGIN Header_StartDefaultTask */
+/* USER CODE BEGIN Header_StartCarControlTask */
 /**
-  * @brief  Function implementing the defaultTask thread.
+  * @brief  Function implementing the CarControlTask thread.
   * @param  argument: Not used
   * @retval None
   */
-/* USER CODE END Header_StartDefaultTask */
-void StartDefaultTask(void *argument)
+/* USER CODE END Header_StartCarControlTask */
+void StartCarControlTask(void *argument)
 {
-  /* USER CODE BEGIN StartDefaultTask */
+  /* USER CODE BEGIN StartCarControlTask */
   /* Infinite loop */
   for(;;)
   {
     osDelay(1);
   }
-  /* USER CODE END StartDefaultTask */
+  /* USER CODE END StartCarControlTask */
+}
+
+/* USER CODE BEGIN Header_StartSensorTask */
+/**
+* @brief Function implementing the SensorTask thread.
+* @param argument: Not used
+* @retval None
+*/
+/* USER CODE END Header_StartSensorTask */
+void StartSensorTask(void *argument)
+{
+  /* USER CODE BEGIN StartSensorTask */
+  /* Infinite loop */
+  for(;;)
+  {
+    osDelay(1);
+  }
+  /* USER CODE END StartSensorTask */
+}
+
+/* USER CODE BEGIN Header_StartParkAssistTask */
+/**
+* @brief Function implementing the ParkAssistTask thread.
+* @param argument: Not used
+* @retval None
+*/
+/* USER CODE END Header_StartParkAssistTask */
+void StartParkAssistTask(void *argument)
+{
+  /* USER CODE BEGIN StartParkAssistTask */
+  /* Infinite loop */
+  for(;;)
+  {
+    osDelay(1);
+  }
+  /* USER CODE END StartParkAssistTask */
 }
 
 /* Private application code --------------------------------------------------*/
