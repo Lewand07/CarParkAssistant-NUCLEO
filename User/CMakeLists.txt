@@ -28,6 +28,7 @@ target_sources(car_assistant_lib INTERFACE
     Adapters/Src/sensor_vl53l5cx_adapter.c
     Interfaces/Src/car_interface.c
     Setup/Src/car_setup.c
+    Setup/Src/sensors_setup.c
 )
 
 target_link_directories(car_assistant_lib INTERFACE
