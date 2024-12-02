@@ -30,12 +30,12 @@ Car_Status Car_SetSteering(Car_Interface* car, float angle) {
     return CAR_OK;
 }
 
-Car_Status Car_SetSpeed(Car_Interface* car, int direction, uint8_t speed) {
+Car_Status Car_SetSpeed(Car_Interface* car, Car_Direction direction, uint8_t speed) {
     if (NULL == car) {
         return CAR_ERROR;
     }
 
-    if (MOTOR_OK != Motor_SetSpeed(&car->motor, direction, speed)) {
+    if (MOTOR_OK != Motor_SetSpeed(&car->motor, (int)direction, speed)) {
         return CAR_ERROR_MOTOR;
     }
 

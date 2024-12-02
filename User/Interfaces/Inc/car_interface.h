@@ -4,12 +4,24 @@
 #include "motor_interface.h"
 #include "servo_interface.h"
 
+// Default car steering macros (redefine in the setup file if needed)
+#define CAR_STEERING_LEFT   0.f
+#define CAR_STEERING_RIGHT  180.f
+#define CAR_STEERING_CENTER 90.f
+
 typedef enum {
     CAR_OK = 0,
     CAR_ERROR,
     CAR_ERROR_SERVO,
     CAR_ERROR_MOTOR
 } Car_Status;
+
+typedef enum {
+    CAR_FORWARD,
+    CAR_BACKWARD,
+    CAR_STOP,
+    CAR_COAST
+} Car_Direction;
 
 typedef struct {
     Motor_Interface motor;
@@ -38,7 +50,7 @@ Car_Status Car_SetSteering(Car_Interface* car, float angle);
  * @param speed Speed as a percentage (0–100%).
  * @return Status of the operation.
  */
-Car_Status Car_SetSpeed(Car_Interface* car, int direction, uint8_t speed);
+Car_Status Car_SetSpeed(Car_Interface* car, Car_Direction direction, uint8_t speed);
 
 /**
  * @brief Stop the car.
