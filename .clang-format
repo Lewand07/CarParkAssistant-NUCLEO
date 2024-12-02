@@ -1,5 +1,6 @@
 ---
 BasedOnStyle: Google
+AlignConsecutiveMacros: true
 AllowShortFunctionsOnASingleLine: Inline
 AllowShortIfStatementsOnASingleLine: true
 AllowShortLoopsOnASingleLine: true
