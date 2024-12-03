@@ -54,10 +54,10 @@ const osThreadAttr_t CarControlTask_attributes = {
   .stack_size = 128 * 4,
   .priority = (osPriority_t) osPriorityNormal,
 };
-/* Definitions for SensorTask */
-osThreadId_t SensorTaskHandle;
-const osThreadAttr_t SensorTask_attributes = {
-  .name = "SensorTask",
+/* Definitions for SensorsTask */
+osThreadId_t SensorsTaskHandle;
+const osThreadAttr_t SensorsTask_attributes = {
+  .name = "SensorsTask",
   .stack_size = 512 * 4,
   .priority = (osPriority_t) osPriorityLow,
 };
@@ -75,7 +75,7 @@ const osThreadAttr_t ParkAssistTask_attributes = {
 /* USER CODE END FunctionPrototypes */
 
 void StartCarControlTask(void *argument);
-void StartSensorTask(void *argument);
+void StartSensorsTask(void *argument);
 void StartParkAssistTask(void *argument);
 
 void MX_FREERTOS_Init(void); /* (MISRA C 2004 rule 8.1) */
@@ -110,8 +110,8 @@ void MX_FREERTOS_Init(void) {
   /* creation of CarControlTask */
   CarControlTaskHandle = osThreadNew(StartCarControlTask, NULL, &CarControlTask_attributes);
 
-  /* creation of SensorTask */
-  SensorTaskHandle = osThreadNew(StartSensorTask, NULL, &SensorTask_attributes);
+  /* creation of SensorsTask */
+  SensorsTaskHandle = osThreadNew(StartSensorsTask, NULL, &SensorsTask_attributes);
 
   /* creation of ParkAssistTask */
   ParkAssistTaskHandle = osThreadNew(StartParkAssistTask, NULL, &ParkAssistTask_attributes);
@@ -144,18 +144,22 @@ void StartCarControlTask(void *argument)
   /* USER CODE END StartCarControlTask */
 }
 
-/* USER CODE BEGIN Header_StartSensorTask */
+/* USER CODE BEGIN Header_StartSensorsTask */
 /**
-* @brief Function implementing the SensorTask thread.
+* @brief Function implementing the SensorsTask thread.
 * @param argument: Not used
 * @retval None
 */
-/* USER CODE END Header_StartSensorTask */
-void StartSensorTask(void *argument)
+/* USER CODE END Header_StartSensorsTask */
+void StartSensorsTask(void *argument)
 {
-  /* USER CODE BEGIN StartSensorTask */
-  SensorsTask();
-  /* USER CODE END StartSensorTask */
+  /* USER CODE BEGIN StartSensorsTask */
+  /* Infinite loop */
+  for(;;)
+  {
+    osDelay(1);
+  }
+  /* USER CODE END StartSensorsTask */
 }
 
 /* USER CODE BEGIN Header_StartParkAssistTask */
