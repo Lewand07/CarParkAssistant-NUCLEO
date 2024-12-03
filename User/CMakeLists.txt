@@ -30,6 +30,7 @@ target_sources(car_assistant_lib INTERFACE
     Interfaces/Src/car_interface.c
     Setup/Src/car_setup.c
     Setup/Src/sensors_setup.c
+    Tasks/Src/car_control_task.c
     Tasks/Src/sensors_task.c
 )
 
