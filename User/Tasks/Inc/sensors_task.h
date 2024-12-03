@@ -7,6 +7,9 @@
 #define SENSOR_SCAN_FREQ_HZ  10U
 #define SENSOR_SCAN_DELAY_MS (1000U) / SENSOR_SCAN_FREQ_HZ
 
+// Global mutex for synchronizing access to shared sensors data
+extern osMutexId_t SensorsDataMutexHandle;
+
 /**
  * @brief Sensors Task.
  */

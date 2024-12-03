@@ -1,8 +1,5 @@
 #include "sensors_task.h"
 
-// Global mutex for synchronizing access to shared sensors data
-extern osMutexId_t SensorsDataMutexHandle;
-
 void SensorsTask(void) {
     uint8_t i, row, col;
 
