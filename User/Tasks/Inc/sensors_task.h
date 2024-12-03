@@ -9,7 +9,6 @@
 
 /**
  * @brief Sensors Task.
- * @return Status of the operation.
  */
 void SensorsTask(void);
 

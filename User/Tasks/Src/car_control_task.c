@@ -2,7 +2,7 @@
 
 extern osMessageQueueId_t CarInstructionQueueHandle;
 
-Car_Status CarControlTask(void) {
+void CarControlTask(void) {
     Car_Instruction instruction;
 
     for (;;) {

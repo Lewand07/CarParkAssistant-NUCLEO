@@ -6,8 +6,7 @@
 
 /**
  * @brief Car Control Task.
- * @return Status of the operation.
  */
-Car_Status CarControlTask(void);
+void CarControlTask(void);
 
 #endif  // CAR_CONTROL_TASK_H
