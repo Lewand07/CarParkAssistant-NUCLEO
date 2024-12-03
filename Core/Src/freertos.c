@@ -27,6 +27,7 @@
 /* USER CODE BEGIN Includes */
 #include "car_control_task.h"
 #include "sensors_task.h"
+#include "park_assist_task.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -182,11 +183,7 @@ void StartSensorsTask(void *argument)
 void StartParkAssistTask(void *argument)
 {
   /* USER CODE BEGIN StartParkAssistTask */
-  /* Infinite loop */
-  for(;;)
-  {
-    osDelay(1);
-  }
+  ParkAssistTask();
   /* USER CODE END StartParkAssistTask */
 }
 
