@@ -16,6 +16,7 @@ target_include_directories(car_assistant_lib INTERFACE
     Interfaces/Inc
     Adapters/Inc
     Setup/Inc
+    Tasks/Inc
 )
 
 target_sources(car_assistant_lib INTERFACE
@@ -29,6 +30,7 @@ target_sources(car_assistant_lib INTERFACE
     Interfaces/Src/car_interface.c
     Setup/Src/car_setup.c
     Setup/Src/sensors_setup.c
+    Tasks/Src/sensors_task.c
 )
 
 target_link_directories(car_assistant_lib INTERFACE
