@@ -68,6 +68,11 @@ const osThreadAttr_t ParkAssistTask_attributes = {
   .stack_size = 128 * 4,
   .priority = (osPriority_t) osPriorityLow,
 };
+/* Definitions for SensorsDataMutex */
+osMutexId_t SensorsDataMutexHandle;
+const osMutexAttr_t SensorsDataMutex_attributes = {
+  .name = "SensorsDataMutex"
+};
 
 /* Private function prototypes -----------------------------------------------*/
 /* USER CODE BEGIN FunctionPrototypes */
@@ -89,6 +94,9 @@ void MX_FREERTOS_Init(void) {
   /* USER CODE BEGIN Init */
 
   /* USER CODE END Init */
+  /* Create the mutex(es) */
+  /* creation of SensorsDataMutex */
+  SensorsDataMutexHandle = osMutexNew(&SensorsDataMutex_attributes);
 
   /* USER CODE BEGIN RTOS_MUTEX */
   /* add mutexes, ... */
@@ -154,11 +162,7 @@ void StartCarControlTask(void *argument)
 void StartSensorsTask(void *argument)
 {
   /* USER CODE BEGIN StartSensorsTask */
-  /* Infinite loop */
-  for(;;)
-  {
-    osDelay(1);
-  }
+  SensorsTask();
   /* USER CODE END StartSensorsTask */
 }
 

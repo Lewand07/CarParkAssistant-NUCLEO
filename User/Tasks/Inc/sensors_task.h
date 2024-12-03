@@ -11,6 +11,6 @@
  * @brief Sensors Task.
  * @return Status of the operation.
  */
-Sensor_Status SensorsTask(void);
+void SensorsTask(void);
 
 #endif  // SENSORS_TASK_H
