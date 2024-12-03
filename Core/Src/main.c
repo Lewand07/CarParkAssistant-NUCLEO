@@ -28,6 +28,7 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
+#include "car_setup.h"
 #include "sensors_setup.h"
 /* USER CODE END Includes */
 
@@ -100,6 +101,11 @@ int main(void)
   MX_TIM3_Init();
   MX_I2C1_Init();
   /* USER CODE BEGIN 2 */
+  if (CAR_OK != Car_Setup())
+  {
+    Error_Handler();
+  }
+
   if (SENSOR_OK != Sensors_Setup())
   {
     Error_Handler();
