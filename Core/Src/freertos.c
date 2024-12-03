@@ -25,7 +25,7 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-
+#include "sensors_task.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -154,11 +154,7 @@ void StartCarControlTask(void *argument)
 void StartSensorTask(void *argument)
 {
   /* USER CODE BEGIN StartSensorTask */
-  /* Infinite loop */
-  for(;;)
-  {
-    osDelay(1);
-  }
+  SensorsTask();
   /* USER CODE END StartSensorTask */
 }
 
