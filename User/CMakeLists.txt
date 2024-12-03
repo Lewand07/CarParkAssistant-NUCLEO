@@ -32,6 +32,7 @@ target_sources(car_assistant_lib INTERFACE
     Setup/Src/sensors_setup.c
     Tasks/Src/car_control_task.c
     Tasks/Src/sensors_task.c
+    Tasks/Src/park_assist_task.c
 )
 
 target_link_directories(car_assistant_lib INTERFACE
