@@ -25,6 +25,7 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
+#include "car_control_task.h"
 #include "sensors_task.h"
 /* USER CODE END Includes */
 
@@ -68,6 +69,11 @@ const osThreadAttr_t ParkAssistTask_attributes = {
   .stack_size = 128 * 4,
   .priority = (osPriority_t) osPriorityLow,
 };
+/* Definitions for CarInstructionQueue */
+osMessageQueueId_t CarInstructionQueueHandle;
+const osMessageQueueAttr_t CarInstructionQueue_attributes = {
+  .name = "CarInstructionQueue"
+};
 /* Definitions for SensorsDataMutex */
 osMutexId_t SensorsDataMutexHandle;
 const osMutexAttr_t SensorsDataMutex_attributes = {
@@ -110,6 +116,10 @@ void MX_FREERTOS_Init(void) {
   /* start timers, add new ones, ... */
   /* USER CODE END RTOS_TIMERS */
 
+  /* Create the queue(s) */
+  /* creation of CarInstructionQueue */
+  CarInstructionQueueHandle = osMessageQueueNew(16, sizeof(Car_Instruction), &CarInstructionQueue_attributes);
+
   /* USER CODE BEGIN RTOS_QUEUES */
   /* add queues, ... */
   /* USER CODE END RTOS_QUEUES */
@@ -144,11 +154,7 @@ void MX_FREERTOS_Init(void) {
 void StartCarControlTask(void *argument)
 {
   /* USER CODE BEGIN StartCarControlTask */
-  /* Infinite loop */
-  for(;;)
-  {
-    osDelay(1);
-  }
+  CarControlTask();
   /* USER CODE END StartCarControlTask */
 }
 
