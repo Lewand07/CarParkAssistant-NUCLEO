@@ -5,19 +5,19 @@
 #include "tim.h"
 
 // Override car steering macros (hardware specific values)
-#if defined CAR_STEERING_LEFT
-#undef CAR_STEERING_LEFT
+#if defined CAR_LEFT_ANGLE
+#undef CAR_LEFT_ANGLE
 #endif
-#if defined CAR_STEERING_RIGHT
-#undef CAR_STEERING_RIGHT
+#if defined CAR_RIGHT_ANGLE
+#undef CAR_RIGHT_ANGLE
 #endif
-#if defined CAR_STEERING_CENTER
-#undef CAR_STEERING_CENTER
+#if defined CAR_CENTER_ANGLE
+#undef CAR_CENTER_ANGLE
 #endif
 
-#define CAR_STEERING_LEFT   10.f
-#define CAR_STEERING_RIGHT  170.f
-#define CAR_STEERING_CENTER 90.f
+#define CAR_LEFT_ANGLE   10.f
+#define CAR_RIGHT_ANGLE  170.f
+#define CAR_CENTER_ANGLE 90.f
 /* Global Access to Car */
 extern Car_Interface car;
 
