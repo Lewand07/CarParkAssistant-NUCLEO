@@ -13,7 +13,7 @@ typedef enum {
 } Sensor_Status;
 
 typedef struct {
-    uint16_t distances[MAX_SENSOR_ROWS][MAX_SENSOR_COLS];
+    int32_t distances[MAX_SENSOR_ROWS][MAX_SENSOR_COLS];
     uint8_t rows;
     uint8_t cols;
 } Sensor_Data;

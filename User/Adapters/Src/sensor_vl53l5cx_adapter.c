@@ -30,15 +30,17 @@ Sensor_Status Sensor_Adapter_VL53L5CX_ReadData(void* sensor_instance, Sensor_Dat
     VL53L5CX_Object_t* dev = (VL53L5CX_Object_t*)sensor_instance;
     VL53L5CX_Result_t results;
     int32_t status = 0;
+    uint8_t i, j, k, l;
+    uint8_t zones_per_line = 8;
 
     if ((NULL == dev) || (NULL == data)) {
         return SENSOR_ERROR;
     }
 
     /* Clear the distances array */
-    memset(data->distances, 0, sizeof(data->distances));
-    data->rows = 1; /* VL53L5CX uses a single column for detected objects */
-    data->cols = 0; /* Will be set dynamically */
+    memset(data->distances, -1, sizeof(data->distances));
+    data->rows = 8; /* VL53L5CX uses an 8x8 matrix for detected objects */
+    data->cols = 8;
 
     /* Poll for data readiness */
     status = VL53L5CX_GetDistance(dev, &results);
@@ -46,11 +48,17 @@ Sensor_Status Sensor_Adapter_VL53L5CX_ReadData(void* sensor_instance, Sensor_Dat
         return SENSOR_ERROR;
     }
 
-    for (uint8_t i = 0; i < results.NumberOfZones; i++) {
-        for (uint8_t j = 0; j < results.ZoneResult[i].NumberOfTargets; j++) {
-            data->distances[i][j] = results.ZoneResult[i].Distance[j];
+    for (j = 0; j < results.NumberOfZones; j += zones_per_line) {
+        for (l = 0; l < VL53L5CX_NB_TARGET_PER_ZONE; l++) {
+            for (k = 0; k < zones_per_line; k++) {
+                i = j / zones_per_line;
+                if (results.ZoneResult[j + k].NumberOfTargets > 0) {
+                    data->distances[i][k] = results.ZoneResult[j + k].Distance[l];
+                } else {
+                    data->distances[i][k] = -1;  // handle if no target is detected
+                }
+            }
         }
-        data->cols = results.ZoneResult[i].NumberOfTargets;
     }
 
     return SENSOR_OK;

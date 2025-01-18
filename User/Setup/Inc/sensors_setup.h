@@ -2,19 +2,19 @@
 #define SENSORS_SETUP_H
 
 #include "gpio.h"
-#include "i2c.h"
 #include "sensor_interface.h"
+#include "stm32f7xx_nucleo_bus.h"
 
 /* Number of sensors */
-#define SENSORS_NUMBER 2
-/* Macros for accessing given sensor */
-#define FRONT_SENSOR_IDX 0
-#define REAR_SENSOR_IDX  1
+#define SENSORS_NUMBER_L3 4U
+#define SENSORS_NUMBER_L5 4U
+#define SENSORS_NUMBER    (SENSORS_NUMBER_L3 + SENSORS_NUMBER_L5)
 
 /* Sensors I2C addresses */
-#define SENSOR_DEFAULT_ADDR 0x52
-#define FRONT_SENSOR_ADDR   0x69
-#define REAR_SENSOR_ADDR    SENSOR_DEFAULT_ADDR
+#define SENSOR_DEFAULT_ADDR 0x52  // 0x29 in 7-bit format
+#define SENSOR_ADDR_OFFSET  0x04  // 4-bit offset between sensors
+#define SENSOR_MAX_ADDR     0xFE  // max address for a 7-bit I2C address
+#define CALC_SENSOR_ADDR(i) (SENSOR_MAX_ADDR - ((i)*SENSOR_ADDR_OFFSET))
 
 /* Global Access to Sensors and Sensors Data */
 extern Sensor_Interface sensors[SENSORS_NUMBER];

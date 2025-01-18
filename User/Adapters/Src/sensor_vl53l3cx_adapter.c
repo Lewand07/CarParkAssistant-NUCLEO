@@ -46,8 +46,8 @@ Sensor_Status Sensor_Adapter_VL53L3CX_ReadData(void* sensor_instance, Sensor_Dat
         return SENSOR_ERROR;
     }
 
-    for (uint8_t i = 0; i < results.NumberOfZones; i++) {
-        for (uint8_t j = 0; j < results.ZoneResult[i].NumberOfTargets; j++) {
+    for (uint8_t i = 0; i < VL53L3CX_MAX_NB_ZONES; ++i) {
+        for (uint8_t j = 0; j < results.ZoneResult[i].NumberOfTargets; ++j) {
             data->distances[i][j] = results.ZoneResult[i].Distance[j];
         }
         data->cols = results.ZoneResult[i].NumberOfTargets;
