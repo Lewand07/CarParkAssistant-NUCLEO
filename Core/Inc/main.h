@@ -57,8 +57,16 @@ void Error_Handler(void);
 /* USER CODE END EFP */
 
 /* Private defines -----------------------------------------------------------*/
+#define S8_PWR_Pin GPIO_PIN_3
+#define S8_PWR_GPIO_Port GPIOE
+#define S5_PWR_Pin GPIO_PIN_4
+#define S5_PWR_GPIO_Port GPIOE
+#define S6_PWR_Pin GPIO_PIN_6
+#define S6_PWR_GPIO_Port GPIOE
 #define USER_Btn_Pin GPIO_PIN_13
 #define USER_Btn_GPIO_Port GPIOC
+#define S7_PWR_Pin GPIO_PIN_7
+#define S7_PWR_GPIO_Port GPIOF
 #define MCO_Pin GPIO_PIN_0
 #define MCO_GPIO_Port GPIOH
 #define RMII_MDC_Pin GPIO_PIN_1
@@ -75,8 +83,10 @@ void Error_Handler(void);
 #define RMII_RXD1_GPIO_Port GPIOC
 #define LD1_Pin GPIO_PIN_0
 #define LD1_GPIO_Port GPIOB
-#define VL53L5CX_LPn_Pin GPIO_PIN_10
-#define VL53L5CX_LPn_GPIO_Port GPIOE
+#define S3_PWR_Pin GPIO_PIN_15
+#define S3_PWR_GPIO_Port GPIOE
+#define S4_PWR_Pin GPIO_PIN_11
+#define S4_PWR_GPIO_Port GPIOB
 #define RMII_TXD1_Pin GPIO_PIN_13
 #define RMII_TXD1_GPIO_Port GPIOB
 #define LD3_Pin GPIO_PIN_14
@@ -89,6 +99,8 @@ void Error_Handler(void);
 #define USB_PowerSwitchOn_GPIO_Port GPIOG
 #define USB_OverCurrent_Pin GPIO_PIN_7
 #define USB_OverCurrent_GPIO_Port GPIOG
+#define S1_PWR_Pin GPIO_PIN_9
+#define S1_PWR_GPIO_Port GPIOC
 #define USB_SOF_Pin GPIO_PIN_8
 #define USB_SOF_GPIO_Port GPIOA
 #define USB_VBUS_Pin GPIO_PIN_9
@@ -103,6 +115,8 @@ void Error_Handler(void);
 #define TMS_GPIO_Port GPIOA
 #define TCK_Pin GPIO_PIN_14
 #define TCK_GPIO_Port GPIOA
+#define S2_PWR_Pin GPIO_PIN_11
+#define S2_PWR_GPIO_Port GPIOC
 #define RMII_TX_EN_Pin GPIO_PIN_11
 #define RMII_TX_EN_GPIO_Port GPIOG
 #define RMII_TXD0_Pin GPIO_PIN_13
