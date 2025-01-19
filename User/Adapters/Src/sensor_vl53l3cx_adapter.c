@@ -52,6 +52,10 @@ Sensor_Status Sensor_Adapter_VL53L3CX_ReadData(void* sensor_instance, Sensor_Dat
         }
         data->cols = results.ZoneResult[i].NumberOfTargets;
     }
+    if (data->cols == 0) {
+        data->cols = 1;
+        data->distances[0][0] = SENSOR_INVALID_DATA;
+    }
 
     return SENSOR_OK;
 }

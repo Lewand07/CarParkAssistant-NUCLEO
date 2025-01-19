@@ -4,8 +4,9 @@
 #include <stddef.h>
 #include <stdint.h>
 
-#define MAX_SENSOR_ROWS 8
-#define MAX_SENSOR_COLS 8
+#define MAX_SENSOR_ROWS     8
+#define MAX_SENSOR_COLS     8
+#define SENSOR_INVALID_DATA -1
 
 typedef enum {
     SENSOR_OK = 0,
