@@ -16,6 +16,18 @@
 #define SENSOR_MAX_ADDR     0xFE  // max address for a 7-bit I2C address
 #define CALC_SENSOR_ADDR(i) (SENSOR_MAX_ADDR - ((i)*SENSOR_ADDR_OFFSET))
 
+/* Enum for sensor indexes */
+enum Sensor_Index {
+    SENSOR_L3_FRONT = 0U,
+    SENSOR_L5_FRONT,
+    SENSOR_L3_RIGHT,
+    SENSOR_L5_RIGHT,
+    SENSOR_L3_REAR,
+    SENSOR_L5_REAR,
+    SENSOR_L3_LEFT,
+    SENSOR_L5_LEFT
+};
+
 /* Global Access to Sensors and Sensors Data */
 extern Sensor_Interface sensors[SENSORS_NUMBER];
 extern Sensor_Data sensors_data[SENSORS_NUMBER];
