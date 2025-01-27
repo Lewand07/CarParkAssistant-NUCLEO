@@ -6,8 +6,13 @@
 #include "sensors_setup.h"
 #include "sensors_task.h"
 
-// Global mutex for synchronizing access to shared sensors data
+/* Constants */
+#define MIN_OBSTACLE_DISTANCE_MM 300U  // Minimum distance to detect an obstacle
+
+// Global variables
 extern osMutexId_t SensorsDataMutexHandle;
+extern osMessageQueueId_t CarInstructionQueueHandle;
+extern Sensor_Data sensors_data[SENSORS_NUMBER];
 
 /**
  * @brief Park Assist Task

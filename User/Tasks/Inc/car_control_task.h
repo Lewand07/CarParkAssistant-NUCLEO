@@ -4,6 +4,8 @@
 #include "car_setup.h"
 #include "cmsis_os.h"
 
+extern osMessageQueueId_t CarInstructionQueueHandle;
+
 /**
  * @brief Car Control Task.
  */

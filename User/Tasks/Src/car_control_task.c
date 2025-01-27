@@ -1,7 +1,5 @@
 #include "car_control_task.h"
 
-extern osMessageQueueId_t CarInstructionQueueHandle;
-
 void CarControlTask(void) {
     Car_Instruction instruction;
 
