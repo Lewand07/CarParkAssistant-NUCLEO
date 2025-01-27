@@ -8,7 +8,7 @@
 #define CAR_LEFT_ANGLE    0.f
 #define CAR_RIGHT_ANGLE   180.f
 #define CAR_CENTER_ANGLE  90.f
-#define CAR_DEFAULT_SPEED 50U
+#define CAR_DEFAULT_SPEED 35U
 
 typedef enum {
     CAR_OK = 0,
