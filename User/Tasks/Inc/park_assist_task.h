@@ -7,7 +7,9 @@
 #include "sensors_task.h"
 
 /* Constants */
-#define MIN_OBSTACLE_DISTANCE_MM 300U  // Minimum distance to detect an obstacle
+#define MIN_OBSTACLE_DISTANCE_MM  300  // Minimum distance to detect an obstacle
+#define MIN_PARKING_SPOT_DEPTH_MM 200  // Minimum depth of a parking spot
+#define MIN_CONSECUTIVE_COLUMNS   24U  // Minimum number of consecutive columns to detect spot
 
 // Global variables
 extern osMutexId_t SensorsDataMutexHandle;
