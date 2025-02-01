@@ -5,9 +5,9 @@
 #include "servo_interface.h"
 
 // Default car macros (redefine in the setup file if needed)
-#define CAR_LEFT_ANGLE    0.f
-#define CAR_RIGHT_ANGLE   180.f
-#define CAR_CENTER_ANGLE  90.f
+#define CAR_LEFT_ANGLE    10.f
+#define CAR_RIGHT_ANGLE   170.f
+#define CAR_CENTER_ANGLE  109.f
 #define CAR_DEFAULT_SPEED 35U
 
 typedef enum {
