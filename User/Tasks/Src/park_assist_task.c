@@ -36,19 +36,19 @@ void ParkAssistTask(void) {
                     left_spot_detected =
                             detect_parking_spot(&sensors_data[SENSOR_L5_LEFT], left_spot_depth,
                                                 &valid_columns_left, false);
-                    // right_spot_detected =
-                    //         detect_parking_spot(&sensors_data[SENSOR_L5_RIGHT], right_spot_depth,
-                    //                             &valid_columns_right, true);
+                    right_spot_detected =
+                            detect_parking_spot(&sensors_data[SENSOR_L5_RIGHT], right_spot_depth,
+                                                &valid_columns_right, true);
 
                     // recalculating spot depth if no spot detected
                     if (!left_spot_detected && valid_columns_left == 0) {
                         left_spot_depth =
                                 calculate_spot_depth(sensors_data[SENSOR_L3_LEFT].distances[0][0]);
                     }
-                    // if (!right_spot_detected && valid_columns_right == 0) {
-                    //     right_spot_depth =
-                    //             calculate_spot_depth(sensors_data[SENSOR_L3_RIGHT].distances[0][0]);
-                    // }
+                    if (!right_spot_detected && valid_columns_right == 0) {
+                        right_spot_depth =
+                                calculate_spot_depth(sensors_data[SENSOR_L3_RIGHT].distances[0][0]);
+                    }
                     if (left_spot_detected || right_spot_detected) {
                         wall_distance = right_spot_detected ? right_spot_depth : left_spot_depth;
                         wall_distance -= MIN_PARKING_SPOT_DEPTH_MM;
@@ -60,8 +60,7 @@ void ParkAssistTask(void) {
                     printf("Parking spot detected!\n\r");
                     if (!check_obstacle(&sensors_data[SENSOR_L3_FRONT])) {
                         send_car_instruction(CAR_FORWARD, CAR_CENTER);
-                        delay_ms = get_adjusted_delay(BASE_ALIGN_DELAY_MS, wall_distance);
-                        vTaskDelay(pdMS_TO_TICKS(delay_ms));
+                        vTaskDelay(pdMS_TO_TICKS(BASE_ALIGN_DELAY_MS));
                     }
                     send_car_instruction(CAR_STOP, CAR_CENTER);
                     parking_state = PARKING_REVERSE_STEER;
@@ -83,23 +82,37 @@ void ParkAssistTask(void) {
                     break;
                 case PARKING_ADJUST:
                     send_car_instruction(CAR_BACKWARD, right_spot_detected ? CAR_LEFT : CAR_RIGHT);
-                    delay_ms = get_adjusted_delay(BASE_ADJUST_DELAY_MS, wall_distance);
-                    vTaskDelay(pdMS_TO_TICKS(delay_ms));
+                    vTaskDelay(pdMS_TO_TICKS(BASE_ADJUST_DELAY_MS));
                     send_car_instruction(CAR_STOP, CAR_CENTER);
                     parking_state = PARKING_COMPLETE;
                     break;
                 case PARKING_COMPLETE:
-                    if (!check_obstacle(&sensors_data[SENSOR_L3_FRONT])) {
-                        send_car_instruction(CAR_FORWARD, CAR_CENTER);
-                        break;
-                    }
+                    send_car_instruction(CAR_FORWARD, CAR_CENTER);
+                    vTaskDelay(pdMS_TO_TICKS(400));
                     send_car_instruction(CAR_STOP, CAR_CENTER);
-                    // delay_ms = get_adjusted_delay(BASE_COMPLETE_DELAY_MS, wall_distance);
-                    // vTaskDelay(pdMS_TO_TICKS(delay_ms));
-                    // if (!check_obstacle(&sensors_data[SENSOR_L3_REAR])) {
-                    //     send_car_instruction(CAR_BACKWARD, CAR_CENTER);
-                    //     break;
-                    // }
+                    vTaskDelay(pdMS_TO_TICKS(BASE_COMPLETE_DELAY_MS));
+                    parking_state = PARKING_DRIVE_AWAY;
+                    break;
+                case PARKING_DRIVE_AWAY:
+                    send_car_instruction(CAR_BACKWARD, CAR_CENTER);
+                    vTaskDelay(pdMS_TO_TICKS(300));
+                    send_car_instruction(CAR_STOP, CAR_CENTER);
+                    vTaskDelay(pdMS_TO_TICKS(BASE_DRIVE_AWAY_DELAY_MS));
+                    send_car_instruction(CAR_FORWARD, right_spot_detected ? CAR_LEFT : CAR_RIGHT);
+                    vTaskDelay(pdMS_TO_TICKS(BASE_DRIVE_AWAY_DELAY_MS + 200));
+                    send_car_instruction(CAR_FORWARD, CAR_CENTER);
+                    vTaskDelay(pdMS_TO_TICKS(BASE_DRIVE_AWAY_DELAY_MS));
+                    send_car_instruction(CAR_FORWARD, right_spot_detected ? CAR_RIGHT : CAR_LEFT);
+                    vTaskDelay(pdMS_TO_TICKS(BASE_DRIVE_AWAY_DELAY_MS + 200));
+                    send_car_instruction(CAR_STOP, CAR_CENTER);
+                    parking_state = PARKING_RESET;
+                    break;
+                case PARKING_RESET:
+                    valid_columns_left = 0U;
+                    valid_columns_right = 0U;
+                    left_spot_detected = false;
+                    right_spot_detected = false;
+                    parking_state = PARKING_IDLE;
                     break;
                 default:
                     break;
