@@ -119,7 +119,7 @@ void MX_FREERTOS_Init(void) {
 
   /* Create the queue(s) */
   /* creation of CarInstructionQueue */
-  CarInstructionQueueHandle = osMessageQueueNew(16, sizeof(Car_Instruction), &CarInstructionQueue_attributes);
+  CarInstructionQueueHandle = osMessageQueueNew (16, sizeof(Car_Instruction), &CarInstructionQueue_attributes);
 
   /* USER CODE BEGIN RTOS_QUEUES */
   /* add queues, ... */

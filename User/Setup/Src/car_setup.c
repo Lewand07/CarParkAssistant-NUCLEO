@@ -6,7 +6,7 @@
 Car_Interface car;
 
 /* Static Motor and Servo Devices */
-static MX1508_Motor_DEV motor_dev = {.PWM_TIM_Instance = &htim3,
+static MX1508_Motor_DEV motor_dev = {.PWM_TIM_Instance = &htim4,
                                      .PWM_Channel1 = TIM_CHANNEL_1,
                                      .PWM_Channel2 = TIM_CHANNEL_2,
                                      .PWM_CLK = 1000U};
