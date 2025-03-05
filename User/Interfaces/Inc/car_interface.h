@@ -9,6 +9,7 @@
 #define CAR_RIGHT_ANGLE   170.f
 #define CAR_CENTER_ANGLE  109.f
 #define CAR_DEFAULT_SPEED 35U
+#define CAR_SPEED_MM_S    (686U * (CAR_DEFAULT_SPEED / 100U))
 
 typedef enum {
     CAR_OK = 0,

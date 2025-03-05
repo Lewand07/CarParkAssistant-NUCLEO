@@ -16,8 +16,8 @@
 #define BASE_REVERSE_DELAY_MS     750U    // Base delay for reversing the car
 #define BASE_ADJUST_DELAY_MS      2300U   // Base delay for adjusting the car
 #define BASE_COMPLETE_DELAY_MS    10000U  // Base delay for completing the parking
-#define BASE_DRIVE_AWAY_DELAY_MS  1750U   // Base delay for driving away from the parking spot
-
+#define BASE_DRIVE_AWAY_DELAY_MS  1950U   // Base delay for driving away from the parking spot
+#define DATA_MUTEX_TIMEOUT_MS     (SENSOR_SCAN_DELAY_MS / 2U)  // Mutex timeout in milliseconds
 // Global variables
 extern osMutexId_t SensorsDataMutexHandle;
 extern osMessageQueueId_t CarInstructionQueueHandle;
