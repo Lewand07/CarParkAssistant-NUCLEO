@@ -64,12 +64,12 @@ void ParkAssistTask(void) {
 
                 /* Detect parking spot only on real data */
                 if (!is_predicted) {
-                    // left_spot_detected =
-                    //         detect_parking_spot(&current_data[SENSOR_L5_LEFT], left_spot_depth,
-                    //                             &valid_columns_left, false);
-                    // right_spot_detected =
-                    //         detect_parking_spot(&current_data[SENSOR_L5_RIGHT], right_spot_depth,
-                    //                             &valid_columns_right, true);
+                    left_spot_detected =
+                            detect_parking_spot(&current_data[SENSOR_L5_LEFT], left_spot_depth,
+                                                &valid_columns_left, false);
+                    right_spot_detected =
+                            detect_parking_spot(&current_data[SENSOR_L5_RIGHT], right_spot_depth,
+                                                &valid_columns_right, true);
                 }
 
                 // recalculating spot depth if no spot detected
