@@ -1,0 +1,66 @@
+# ------------------------------------------------------------------------------
+# * MANDATORY SECTION: Defines the input files and directories
+# ------------------------------------------------------------------------------
+PROJECT_NAME           = "CarParkAssistant-NUCLEO"
+PROJECT_NUMBER         = 1.0
+PROJECT_BRIEF          = "An STM32 NUCLEO-based smart parking assistant using Time-of-Flight sensors."
+
+# Input source directories
+INPUT                 = ./User ./Core ./Drivers/BSP/Components/
+RECURSIVE             = YES
+
+# Output directory for documentation
+OUTPUT_DIRECTORY      = ./docs
+CREATE_SUBDIRS        = YES
+
+# ------------------------------------------------------------------------------
+# * BUILD SYSTEM INTEGRATION (CMake)
+# ------------------------------------------------------------------------------
+# The following settings allow integration with CMake (see CMakeLists.txt)
+STRIP_FROM_PATH       = ./User ./Core ./Drivers/BSP/Components/
+
+# ------------------------------------------------------------------------------
+# * GENERAL CONFIGURATION
+# ------------------------------------------------------------------------------
+GENERATE_HTML          = YES
+HTML_OUTPUT            = html
+HTML_STYLESHEET        =
+
+GENERATE_LATEX         = NO
+GENERATE_XML           = NO
+
+EXTRACT_ALL            = YES    # Generate documentation for all entities
+EXTRACT_STATIC         = YES    # Include static functions and variables
+EXTRACT_PRIVATE        = YES    # Include private members
+EXTRACT_PACKAGE        = YES
+OPTIMIZE_OUTPUT_JAVA   = NO
+
+# ------------------------------------------------------------------------------
+# * C/C++ SPECIFIC CONFIGURATION
+# ------------------------------------------------------------------------------
+# OPTIMIZE_FOR_C         = YES
+PREDEFINED             = "STM32"    # Predefined symbol for STM32 project
+
+# Exclude paths related to STM32 libraries (e.g., STM32Cube)
+# EXCLUDE_PATTERNS       = */X-CUBE-TOF1* */Middlewares* */Drivers*
+
+# ------------------------------------------------------------------------------
+# * INPUT FILTER (optional)
+# ------------------------------------------------------------------------------
+INPUT_FILTER           = "sed -e 's/vl53*//g'"
+# Removes STM32 headers from documentation to avoid clutter
+
+# Graphviz
+HAVE_DOT             = YES
+CLASS_DIAGRAMS       = YES
+HIDE_UNDOC_RELATIONS = NO
+UML_LOOK             = YES
+TEMPLATE_RELATIONS   = YES
+CALL_GRAPH           = YES
+CALLER_GRAPH         = YES
+INCLUDE_GRAPH        = YES
+DOT_FONTNAME         = "Helvetica"
+DOT_FONTSIZE         = 10
+DOT_IMAGE_FORMAT     = "png"
+MAX_DOT_GRAPH_WIDTH  = 2048
+MAX_DOT_GRAPH_HEIGHT = 2048
